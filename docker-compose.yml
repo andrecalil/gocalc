@@ -9,7 +9,7 @@ services:
     # API port exposed externally for direct curl-ing during development.
     # The web container talks to the api via the docker network regardless.
     ports:
-      - "8080:9090"
+      - "9090:8080"
     healthcheck:
       # distroless-static has no shell and no wget/curl, so use the Go
       # binary itself with a tiny HTTP ping via the nginx-proxy route.
