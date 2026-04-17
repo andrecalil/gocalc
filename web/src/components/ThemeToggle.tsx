@@ -42,7 +42,7 @@ export function ThemeToggle() {
       data-testid="theme-toggle"
       aria-label="Toggle theme"
     >
-      {applied === "dark" ? "Light mode" : "Dark mode"}
+      {applied === "dark" ? <>&#9728;</> : <>&#127769;</>}
     </Button>
   );
 }

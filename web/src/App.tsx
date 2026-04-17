@@ -7,9 +7,8 @@ export function App() {
   return (
     <>
       <Toast.Provider placement="top end" />
-      <div className="min-h-screen bg-background/20 text-foreground">
-        <header className="flex items-center bg-background justify-between border-b border-surface-secondary px-4 py-3">
-          <h1 className="text-lg font-semibold">GoCalc</h1>
+      <div className="relative min-h-screen bg-background/20 text-foreground">
+        <header className="flex justify-end  px-4 py-3">
           <ThemeToggle />
         </header>
         {/*
@@ -21,6 +20,9 @@ export function App() {
           <Calculator />
           <History />
         </main>
+        <footer className="border-t border-surface-secondary  px-4 py-3 flex flex-row justify-between text-muted fixed bottom-0 w-full bg-background">
+          <h1 className="text-md font-semibold">GoCalc</h1><a className="text-sm" target="_blank" href="https://github.com/andrecalil/gocalc">Source</a>
+        </footer>
       </div>
     </>
   );
