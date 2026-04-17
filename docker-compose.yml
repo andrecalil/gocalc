@@ -28,7 +28,7 @@ services:
     build:
       context: ./web
     ports:
-      - "3000:80"
+      - "3030:80"
     depends_on:
       - api
     restart: unless-stopped
