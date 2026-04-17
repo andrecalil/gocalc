@@ -1,0 +1,34 @@
+# Compose file for self-hosted deployment. One user-facing port: localhost:3000.
+# The web container (nginx) serves static assets and proxies /api/* to the
+# api container over Docker's internal DNS.
+
+services:
+  api:
+    build:
+      context: ./api
+    # API port exposed externally for direct curl-ing during development.
+    # The web container talks to the api via the docker network regardless.
+    ports:
+      - "8080:8080"
+    healthcheck:
+      # distroless-static has no shell and no wget/curl, so use the Go
+      # binary itself with a tiny HTTP ping via the nginx-proxy route.
+      # Simpler: let docker-compose treat the container as healthy based
+      # on start-period + the server's TCP port being open. We drop into
+      # a TCP check via `nc` from the host by relying on `depends_on`
+      # without a healthcheck, and let the web container handle retries.
+      test: ["CMD", "/server", "-health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 3s
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./web
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+    restart: unless-stopped

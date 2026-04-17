@@ -1,0 +1,58 @@
+@import "tailwindcss";
+@import "@heroui/styles";
+
+/*
+ * Accent override — HP-12c–inspired warm muted gold.
+ * HeroUI v3's "primary" button variant cascades through --color-accent, so
+ * setting this here repaints the `=` key, focus rings, and any other accent
+ * touchpoints without per-component overrides.
+ *
+ * Tokens override BOTH:
+ *   --accent / --accent-foreground / --accent-hover  (HeroUI spec)
+ *   --color-accent / ...                             (Tailwind v4 generates these
+ *                                                     under the `--color-*`
+ *                                                     namespace from the theme)
+ */
+@layer theme {
+  :root,
+  .light,
+  [data-theme="light"] {
+    --accent: #c9a961;
+    --accent-hover: #a88544;
+    --accent-foreground: #1a1406;
+
+    --color-accent: #c9a961;
+    --color-accent-hover: #a88544;
+    --color-accent-foreground: #1a1406;
+  }
+
+  .dark,
+  [data-theme="dark"] {
+    --accent: #c9a961;
+    --accent-hover: #d9bd7a;
+    --accent-foreground: #1a1406;
+
+    --color-accent: #c9a961;
+    --color-accent-hover: #d9bd7a;
+    --color-accent-foreground: #1a1406;
+  }
+}
+
+/*
+ * Calculator display typography — tabular monospace so digits align across
+ * lines. No webfont dependency; falls back through the usual stack.
+ */
+.calc-display {
+  font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/*
+ * Truncate a long expression to one line with ellipsis. Used in the history
+ * panel so entries fit the column without a fixed character cap.
+ */
+.truncate-expr {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

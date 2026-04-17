@@ -1,0 +1,17 @@
+# Go
+api/coverage.out
+api/*.out
+api/server
+/tmp/
+
+# Node
+web/node_modules/
+web/dist/
+web/coverage/
+web/*.log
+
+# Editor
+.vscode/
+.idea/
+*.swp
+.DS_Store
