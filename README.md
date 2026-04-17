@@ -117,6 +117,8 @@ Also: `GET /healthz` → `{"status":"ok"}` for liveness checks.
 
 - **Known limitations.** No auth or rate limiting (API is open). No server-side persistence. No scientific functions beyond `sqrt`. No unit conversions. No BigInt / arbitrary precision — everything is `float64`.
 
+- **Equation doesn't clear on resolve.** This is by design, for when the user wants to do consecutive similar calculations.
+
 ## Testing
 
 **API:**
